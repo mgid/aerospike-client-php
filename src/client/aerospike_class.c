@@ -37,6 +37,7 @@
 // SETUP FUNCTIONS
 
 
+
 static void set_as_config_from_ini(as_config* config);
 static as_status set_as_config(as_config* config, HashTable* z_conf_hash);
 static as_status set_policy_defaults_from_hash(as_config* config, AerospikeClient* client, HashTable* policy_hash);
@@ -268,6 +269,7 @@ PHP_METHOD(Aerospike, __construct)
 		zend_throw_exception(NULL, "hosts entry must be an array", 0);
 		RETURN_LONG(AEROSPIKE_ERR_PARAM);
 	}
+
 
 	as_error_init(&err);
 	as_config_init(&config);
@@ -805,6 +807,13 @@ static as_status set_policy_defaults_from_hash(as_config* config, AerospikeClien
 			return AEROSPIKE_ERR_PARAM;
 		}
 		config->conn_timeout_ms = Z_LVAL_P(policy_zval);
+	}
+	policy_zval = zend_hash_index_find(policy_hash, USE_SERVICES_ALTERNATE);
+	if (policy_zval) {
+		if ((Z_TYPE_P(policy_zval) != IS_TRUE) && (Z_TYPE_P(policy_zval) != IS_FALSE)) {
+			return AEROSPIKE_ERR_PARAM;
+		}
+			config->use_services_alternate = Z_LVAL_P(policy_zval);
 	}
 
 	policy_zval = zend_hash_index_find(policy_hash, OPT_READ_TIMEOUT);
