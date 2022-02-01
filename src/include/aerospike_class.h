@@ -284,13 +284,13 @@ ZEND_BEGIN_ARG_INFO_EX(operate_arg_info, 0, 0, 2)
     ZEND_ARG_INFO(0, options)
 ZEND_END_ARG_INFO();
 
-PHP_METHOD(Aerospike, operateOrdered);
-ZEND_BEGIN_ARG_INFO_EX(operate_ordered_arg_info, 0, 0, 2)
-    ZEND_ARG_PASS_INFO(0)
-    ZEND_ARG_PASS_INFO(0)
-    ZEND_ARG_PASS_INFO(1)
-    ZEND_ARG_PASS_INFO(0)
-ZEND_END_ARG_INFO();
+// PHP_METHOD(Aerospike, operateOrdered);
+// ZEND_BEGIN_ARG_INFO_EX(operate_ordered_arg_info, 0, 0, 2)
+//     ZEND_ARG_PASS_INFO(0)
+//     ZEND_ARG_PASS_INFO(0)
+//     ZEND_ARG_PASS_INFO(1)
+//     ZEND_ARG_PASS_INFO(0)
+// ZEND_END_ARG_INFO();
 
 PHP_METHOD(Aerospike, put);
 ZEND_BEGIN_ARG_INFO_EX(put_arg_info, 0, 0, 2)
@@ -480,12 +480,12 @@ ZEND_BEGIN_ARG_INFO_EX(scan_apply_arg_info, 0, 0, 6)
     ZEND_ARG_INFO(0, options)
 ZEND_END_ARG_INFO();
 
-PHP_METHOD(Aerospike, scanInfo);
-ZEND_BEGIN_ARG_INFO_EX(scan_info_arg_info, 0, 0, 2)
-    ZEND_ARG_PASS_INFO(0)
-    ZEND_ARG_PASS_INFO(1)
-    ZEND_ARG_PASS_INFO(0)
-ZEND_END_ARG_INFO();
+// PHP_METHOD(Aerospike, scanInfo);
+// ZEND_BEGIN_ARG_INFO_EX(scan_info_arg_info, 0, 0, 2)
+//     ZEND_ARG_PASS_INFO(0)
+//     ZEND_ARG_PASS_INFO(1)
+//     ZEND_ARG_PASS_INFO(0)
+// ZEND_END_ARG_INFO();
 
 PHP_METHOD(Aerospike, query);
 ZEND_BEGIN_ARG_INFO_EX(query_arg_info, 0, 0, 4)

@@ -27,6 +27,7 @@
 
 /* {{{ proto int Aerospike::scanInfo ( int scan_id, array &info [, array $options ] )
     Gets the status of a background scan triggered by scanApply()  */
+/*
 PHP_METHOD(Aerospike, scanInfo) {
 
 	as_error err;
@@ -81,4 +82,5 @@ PHP_METHOD(Aerospike, scanInfo) {
 	RETURN_LONG(err.code);
 
 }
+*/
 /* }}} */

@@ -27,6 +27,13 @@
 *
 */
 
+#ifndef TSRMLS_DC
+#define TSRMLS_DC
+#endif
+#ifndef TSRMLS_CC
+#define TSRMLS_CC
+#endif
+
 
 as_status as_val_to_zval(const as_val* aerospike_value, zval* return_val, as_error* err);
 as_status as_key_to_zval(const as_key* key, zval* z_key, bool show_pk, as_error* err);
