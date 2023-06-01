@@ -243,9 +243,6 @@ PHP_METHOD(Aerospike, __construct)
 	as_error_init(&client->client_error);
 	zend_error_handling error_handling; // store the old error handling here
 
-	zend_update_property_long(aerospike_ce, Z_OBJ_P(getThis()), "errorno", sizeof("errorno") - 1, AEROSPIKE_OK);
-	zend_update_property_string(aerospike_ce, Z_OBJ_P(getThis()), "error", sizeof("error") - 1, "");
-
 	zend_replace_error_handling(EH_THROW, NULL, &error_handling TSRMLS_CC); // fail to construct here must raise error
 	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "h|bh",
 		&z_config, &persistent, &z_options) != SUCCESS) {
