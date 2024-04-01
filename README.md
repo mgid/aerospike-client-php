@@ -40,10 +40,12 @@ Full documentation of the Aerospike database is available at http://www.aerospik
     # by default; Otherwise, you will need to fetch them from a repository, the package name may vary.
     sudo yum install php-pear # unless PHP was manually installed
 
-### Ubuntu and Debian (apt)
+### Ubuntu (Focal)
 
-    sudo apt-get install build-essential autoconf libssl-dev
-    sudo apt-get install php7.0-dev php-pear # unless PHP was manually installed
+    sudo apt-get install build-essential autoconf libssl-dev git software-properties-common
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt-get update
+    sudo apt-get install php8.3-dev php-pear
 
 ### OS X
 
@@ -77,22 +79,15 @@ Windows is currently not supported.
 
 ## Installation
 
-### Building with Composer
-
-Using [Composer](https://getcomposer.org/) you can download and build the PHP
-extension:
-
-    composer require aerospike/aerospike-client-php ~7.0
-    find vendor/aerospike/aerospike-client-php/ -name "*.sh" -exec chmod +x {} \;
-    cd vendor/aerospike/aerospike-client-php/ && sudo composer run-script post-install-cmd
-
 ### Building Manually
 
 To build the PHP extension manually you will need to fetch the
-[latest release](https://github.com/aerospike/aerospike-client-php/releases/latest)
-from Github, then run the `build.sh` script in the `src/` directory.
+[library](https://github.com/mgid/aerospike-client-php.git)
+from Github, then run the `build.sh` script in the `src/` directory:
 
-    cd src
+    git clone https://github.com/mgid/aerospike-client-php.git
+    cd aerospike-client-php/src
+    export AEROSPIKE_C_CLIENT=4.6.23
     ./build.sh
 
 This will download the Aerospike C client SDK if necessary into
@@ -102,26 +97,21 @@ This will download the Aerospike C client SDK if necessary into
 
 To install the PHP extension do:
 
-    make install
+    sudo make install
     php -i | grep ".ini "
 
 Now edit the php.ini file.  If PHP is configured --with-config-file-scan-dir
 (usually set to `/etc/php.d/`) you can create an `aerospike.ini` file in the
 directory, otherwise edit `php.ini` directly. Add the following directive:
 
-    extension=aerospike.so
-    aerospike.udf.lua_user_path=/path/to/aerospike/usr-lua
+    echo '[aerospike]' > /etc/php/8.3/mods-available/aerospike.ini
+    echo 'extension=aerospike.so' >> /etc/php/8.3/mods-available/aerospike.ini
+    phpenmode aerospike
 
 The *aerospike* module should now be available to the PHP CLI:
 
     php -m | grep aerospike
     aerospike
-
-Remember that if you are using PHP with Nginx or Apache there is likely a
-separate `php.ini` config file for the web server  Copy the `aerospike.ini`
-you have just created into `/etc/php7/apache2/conf.d/`, `/etc/php7/fpm/conf.d/`
-or wherever the configuration include directory of the web server is, then issue
-a graceful restart.
 
 ## License
 
