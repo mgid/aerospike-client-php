@@ -38,7 +38,7 @@ namespace Aerospike;
  * @subpackage Bytes
  * @author     Ronen Botzer <rbotzer@aerospike.com>
  */
-class Bytes implements \Serializable
+class Bytes
 {
     /**
      * The container for the binary-string

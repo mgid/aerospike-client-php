@@ -191,6 +191,7 @@ CLEANUP:
 
 /* {{{ proto int Aerospike::operateOrdered( array key, array operations [,array &returned [,array options ]] )
    Performs multiple operation on a record */
+/*
 PHP_METHOD(Aerospike, operateOrdered) {
 	as_error err;
 	as_operations ops;
@@ -320,6 +321,7 @@ CLEANUP:
 	}
 	RETURN_LONG(err.code);
 }
+*/
 /* }}} */
 
 
